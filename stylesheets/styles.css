@@ -2,7 +2,7 @@
 
 body {
   padding:50px;
-  font:14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font:14px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
   color:#777;
   font-weight:300;
 }
@@ -99,6 +99,10 @@ header {
   width:270px;
   float:left;
   position:fixed;
+}
+
+header .view {
+  line-height: 2;
 }
 
 header ul {
