@@ -29,36 +29,70 @@
       </header>
       <section>
         <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+<a name="what-is-a-bookmarklet" class="anchor" href="#what-is-a-bookmarklet"><span class="octicon octicon-link"></span></a>What is a bookmarklet?</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>According to Wikipedia, a <a href="http://en.wikipedia.org/wiki/Bookmarklet">bookmarklet</a>
+is a bookmark stored in a web browser that contains JavaScript commands to extend the browser's functionality.</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>Usually bookmarklets are created when the user drags and drops a
+special anchor (<code>&lt;a&gt;</code>) element into their bookmarks toolbar.
+The anchor's <code>href</code> attribute is set to <code>javascript:&lt;the code to execute&gt;</code>.</p>
 
 <h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a name="how-does-this-plugin-help" class="anchor" href="#how-does-this-plugin-help"><span class="octicon octicon-link"></span></a>How does this plugin help?</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>Bookmarklets are kind of irritating to maintain, since you have
+to prepare URL-encoded JavaScript and add it to your
+<code>&lt;a&gt;</code> element every time you update the script.</p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>This jQuery plugin loads your bookmarklet's JavaScript from an external file,
+and then augments an anchor element on your page
+with the appropriate url.
+It can also load JavaScript from a Gist via
+the GitHub API.</p>
 
 <h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h3>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<ol>
+<li>
+<p>Include jQuery:</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+</li>
+<li>
+<p>Include plugin's code:</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"dist/jquery.bookmarklet.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+</li>
+<li>
+<p>Add an anchor to your HTML:</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">"element"</span><span class="nt">&gt;</span>My Bookmarklet<span class="nt">&lt;/a&gt;</span>
+</pre></div>
+</li>
+<li>
+<p>Call the plugin:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">"#element"</span><span class="p">).</span><span class="nx">bookmarklet</span><span class="p">({</span>
+    <span class="nx">raw</span><span class="o">:</span> <span class="s2">"path/to/your/script.js"</span>
+<span class="p">});</span>
+</pre></div>
+
+<p>Alternatively, point the plugin at a Gist:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">"#element"</span><span class="p">).</span><span class="nx">bookmarklet</span><span class="p">({</span>
+    <span class="nx">gist_id</span><span class="o">:</span> <span class="s2">"MY_GIST_ID"</span><span class="p">,</span>
+    <span class="nx">gist_filename</span><span class="o">:</span> <span class="s2">"filename.js"</span>
+    <span class="cm">/* gist_filename is optional if the Gist contains one file */</span>
+<span class="p">});</span>
+</pre></div>
+
+<p>You can get your Gist's id from its url: <code>https://gist.github.com/&lt;username&gt;/&lt;gist_id&gt;</code>.</p>
+</li>
+</ol>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/michaelbrooks">michaelbrooks</a></p>
