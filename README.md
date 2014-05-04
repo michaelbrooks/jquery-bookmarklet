@@ -1,5 +1,4 @@
-# jQuery Bookmarklet Plugin [![Build Status](https://secure.travis-ci.org/michaelbroks/jquery-bookmarklet.svg?branch=master)](https://travis-ci.org/michaelbrooks/jquery-bookmarklet)
-
+# jQuery Bookmarklet Plugin [![Build Status](https://travis-ci.org/michaelbrooks/jquery-bookmarklet.svg?branch=master)](https://travis-ci.org/michaelbrooks/jquery-bookmarklet)
 ### Make Bookmarklets from JavaScript files
 
 According to Wikipedia, a [bookmarklet](http://en.wikipedia.org/wiki/Bookmarklet)
