@@ -43,7 +43,7 @@
         "raw": function() {
             return $.ajax({
                 url: this.settings.raw,
-                dataType: 'text'
+                dataType: "text"
             });
         }
     };

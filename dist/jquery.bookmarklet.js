@@ -13,7 +13,19 @@
     var pluginName = "bookmarklet",
         defaults = {
             //Probably do not need to change this
-            gist_api_url: "https://api.github.com/gists/"
+            gist_api_url: "https://api.github.com/gists/",
+
+            //Set this to request a Gist
+            gist_id: undefined,
+            //If your Gist contains multiple files, use this:
+            gist_filename: undefined,
+
+            //Plain JavaScript files can be loaded with this option:
+            raw: undefined,
+
+            //A callback that will be executed when the bookmarklet is created.
+            //Will be given the jQuery-selected element as an argument:
+            on_ready: undefined
         };
 
     var handlers = {
@@ -37,7 +49,10 @@
                 });
         },
         "raw": function() {
-            return $.get(this.settings.raw);
+            return $.ajax({
+                url: this.settings.raw,
+                dataType: "text"
+            });
         }
     };
 
@@ -74,6 +89,7 @@
             request
                 .done(function(code) {
                     self.$element.attr("href", self.build_url(code));
+                    self.settings.on_ready && self.settings.on_ready(self.$element);
                 })
                 .fail(function(error) {
                     throw error;
