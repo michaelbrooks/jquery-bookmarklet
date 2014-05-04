@@ -1,0 +1,36 @@
+{
+	"name": "bookmarklet",
+	"title": "jQuery Bookmarklet",
+	"description": "jQuery plugin to make bookmarklets from JavaScript files.",
+	"keywords": [
+		"jquery",
+		"bookmarklet",
+		"plugins"
+	],
+	"version": "0.1.0",
+	"author": {
+		"name": "Michael Brooks",
+		"email": "mjbrooks@uw.edu",
+		"url": "https://github.com/michaelbrooks"
+	},
+	"maintainers": [
+		{
+            "name": "Michael Brooks",
+            "email": "mjbrooks@uw.edu",
+            "url": "https://github.com/michaelbrooks"
+        }
+	],
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "http://opensource.org/licenses/MIT"
+		}
+	],
+	"bugs": "https://github.com/michaelbrooks/jquery-bookmarklet/issues",
+	"homepage": "http://michaelbrooks.github.io/jquery-bookmarklet",
+	"docs": "https://github.com/michaelbrooks/jquery-bookmarklet#readme",
+	"download": "https://github.com/michaelbrooks/jquery-bookmarklet/archive/master.zip",
+	"dependencies": {
+		"jquery": ">=1.5"
+	}
+}
